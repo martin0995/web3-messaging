@@ -1,4 +1,5 @@
 from web3 import Web3
+from os import environ
 from config.settings import WEB3_PROVIDER_URL
 
 # Connect to a blockchain node (Infura, local node, etc.)
