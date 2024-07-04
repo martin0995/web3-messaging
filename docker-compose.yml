@@ -1,0 +1,8 @@
+services:
+  web3_messaging:
+    build: .
+    ports:
+      - "5002:5002"
+    env_file: .env
+    volumes:
+      - .:/app
