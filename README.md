@@ -84,6 +84,32 @@ python3 bot/bot.py
 - Send a WhatsApp message to your Twilio sandbox number.
 - Use commands like balance <your_ethereum_address> to interact with the bot.
 
+## Running the Bot with Docker
+
+To run the Web3 WhatsApp Bot with Docker, follow these steps:
+
+1. **Build and Run the Docker Container**
+
+    ```bash
+    docker-compose up --build -d
+    ```
+
+2. **Run ngrok to Forward Requests**
+
+    ```bash
+    ngrok http 5002
+    ```
+
+3. **Configure Twilio Webhook**
+
+    Update the Twilio webhook URL to the ngrok forwarding URL provided. For example, if ngrok provides `https://5fa6-85-76-103-138.ngrok-free.app`, set the Twilio webhook URL to:
+
+    ```
+    https://5fa6-85-76-103-138.ngrok-free.app/webhook
+    ```
+
+These steps will set up and run your bot using Docker and ensure it is accessible via the ngrok URL.
+
 ## Code Overview
 ### Directory Structure
 
