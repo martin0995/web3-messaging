@@ -3,19 +3,13 @@ from twilio.twiml.messaging_response import MessagingResponse
 from twilio.request_validator import RequestValidator
 from handlers import handle_balance_request, send_whatsapp_message, send_interactive_message
 from twilio.rest import Client
-from os import environ
 import logging
-
-TWILIO_ACCOUNT_SID = environ.get('TWILIO_ACCOUNT_SID')
-TWILIO_AUTH_TOKEN = environ.get('TWILIO_AUTH_TOKEN')
-TWILIO_WHATSAPP_NUMBER = environ.get('TWILIO_WHATSAPP_NUMBER')
-WEB3_PROVIDER_URL = environ.get('WEB3_PROVIDER_URL')
-TEST_PHONE_NUMBER = environ.get('TEST_PHONE_NUMBER')
+from config.settings import TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, SECRET_KEY, SERVER_NAME, TEST_PHONE_NUMBER
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '' # Replace with your own secret key
+app.config['SECRET_KEY'] = SECRET_KEY
 app.config['WTF_CSRF_ENABLED'] = False
-app.config['SERVER_NAME'] = '' # Replace with your ngrok URL
+app.config['SERVER_NAME'] = SERVER_NAME
 
 validator = RequestValidator(TWILIO_AUTH_TOKEN)
 
@@ -87,4 +81,4 @@ def test():
 
 if __name__ == '__main__':
     # app.run()
-    app.run(host='localhost', port=5002, debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=True)
